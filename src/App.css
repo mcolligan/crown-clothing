@@ -1,3 +1,9 @@
 body {
   font-family: 'poppins';
+  padding: 20px 30px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
