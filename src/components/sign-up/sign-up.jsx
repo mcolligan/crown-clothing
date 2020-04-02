@@ -40,6 +40,7 @@ export default class SignUp extends React.Component {
         confirmPassword: ''
       });
     } catch (err) {
+      alert(err.message);
       console.error(err);
     }
   }
