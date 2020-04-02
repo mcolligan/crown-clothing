@@ -20,9 +20,21 @@ export default class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async user => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       // this.setState({ currentUser: user });
-      createUserProfileDocument(user)
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+        // get a snapshot of the user data
+        userRef.onSnapshot(snapShot => {
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
+            }
+          });
+        });
+      }
+      this.setState({ currentUser: userAuth});
     })
   }
 
