@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { auth } from '../../firebase/firebase.js';
 
@@ -26,4 +27,12 @@ const Header = ({ currentUser }) => (
   </div>
 );
 
-export default Header;
+
+/*
+  mapState gets the current state from reducers. then uses connect for the link
+*/
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+})
+
+export default connect(mapStateToProps)(Header);
