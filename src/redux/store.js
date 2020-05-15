@@ -6,7 +6,7 @@ import rootReducer from './root-reducer.js';
 
 const middlewares = []; // add any additional middleware to this array
 
-// use logger ony in development eviornmanet
+// use logger only in development eviornmanet
 if (process.env.NODE_ENV === 'development') {
   middlewares.push(logger);
 }
