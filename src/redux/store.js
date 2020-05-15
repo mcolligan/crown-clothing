@@ -4,7 +4,12 @@ import logger from 'redux-logger';
 
 import rootReducer from './root-reducer.js';
 
-const middlewares = [logger]; // add any additional middleware to this array
+const middlewares = []; // add any additional middleware to this array
+
+// use logger ony in development eviornmanet
+if (process.env.NODE_ENV === 'development') {
+  middlewares.push(logger);
+}
 
 export const store = createStore(rootReducer, applyMiddleware(...middlewares));
 
