@@ -1,10 +1,11 @@
 import { createStore, applyMiddleware } from 'redux';
 import { persistStore } from 'redux-persist';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
 import rootReducer from './root-reducer.js';
 
-const middlewares = []; // add any additional middleware to this array
+const middlewares = [thunk]; // add any additional middleware to this array
 
 // use logger only in development eviornmanet
 if (process.env.NODE_ENV === 'development') {
